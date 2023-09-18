@@ -1,0 +1,230 @@
+<html><head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Word Judgment</title>
+    </head>
+    <body>
+        <div class="center">
+            <div class="content">
+                <h2>Please make the judgment purely based on your intuition.</h2>
+                <p>There are no correct answers, and please judge purely based on your intuition and understanding.</p>
+                <p>Not sure? No problem! Just make your best guess!</p>
+
+                    <p>Now, think about Amazon reviews for <b>automotive</b> products. Which sentiment is each word more likely to convey?</p>
+                    <form>
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>favorite</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="favorite" id="favorite_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="favorite_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="favorite" id="favorite_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="favorite_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="favorite" id="favorite_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="favorite_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>ripped</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="ripped" id="ripped_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="ripped_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="ripped" id="ripped_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="ripped_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="ripped" id="ripped_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="ripped_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>returned</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="returned" id="returned_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="returned_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="returned" id="returned_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="returned_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="returned" id="returned_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="returned_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>brightest</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="brightest" id="brightest_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="brightest_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="brightest" id="brightest_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="brightest_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="brightest" id="brightest_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="brightest_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>adorable</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="adorable" id="adorable_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="adorable_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="adorable" id="adorable_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="adorable_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="adorable" id="adorable_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="adorable_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>month</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="month" id="month_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="month_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="month" id="month_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="month_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="month" id="month_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="month_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>allows</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="allows" id="allows_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="allows_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="allows" id="allows_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="allows_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="allows" id="allows_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="allows_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>yet</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="yet" id="yet_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="yet_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="yet" id="yet_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="yet_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="yet" id="yet_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="yet_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>ruined</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="ruined" id="ruined_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="ruined_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="ruined" id="ruined_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="ruined_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="ruined" id="ruined_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="ruined_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+
+                        <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">
+                          <h4>added</h4>
+                       </legend>
+                       <div class="col-sm-10 question">
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="added" id="added_neg" value="negative" autocomplete="off">
+                             <label class="btn btn-outline-primary" for="added_neg">Negative</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="added" id="added_notsure" value="notsure" autocomplete="off">
+                             <label class="btn btn-outline-danger" for="added_notsure">Not Sure</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                             <input type="radio" class="btn-check" name="added" id="added_pos" value="positive" autocomplete="off">
+                             <label class="btn btn-outline-warning" for="added_pos">Positive</label>
+                          </div>
+                       </div>
+                         </fieldset>
+                        <button type="submit" class="btn btn-success">Submit</button></form>
+            </div>
+        </div>
+
+    <footer>
+    </footer>
+
+</body></html>

@@ -1,0 +1,67 @@
+.classWithPad {
+    margin:15px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:20px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 50px; /* adjust as needed for the space from the top */
+}
+
+.content {
+  max-width: 800px; /* set a maximum width for the content */
+  margin: 0 auto; /* center the content horizontally within the div */
+}
+
+.instructions{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#number_reviews_div{
+    display: block;
+}
+
+#data_header {
+  margin:15px;
+  padding-left:25px;
+  padding-right:25px;
+  padding-top:30px;
+}
+
+.controls {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+#progress-bar {
+  flex-grow: 1;
+  height: 10px;
+  background-color: #555;
+  margin: 0 10px;
+  position: relative;
+}
+
+#progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #ff0000;
+  width: 0;
+}
+
+button {
+  margin-right: 10px;
+}

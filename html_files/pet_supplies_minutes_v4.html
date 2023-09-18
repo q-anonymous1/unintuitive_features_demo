@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js" type="text/javascript"></script>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <!-- Color scale -->
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Word Sentiment Judgment</title>
+    </head>
+    <body>
+            <div class='container-fluid'>
+
+            <nav class='navbar navbar-expand-lg navbar-light' style='background-color: #e3f2fd;'>
+                &nbsp;&nbsp;Select AI's explanation format->&nbsp;&nbsp;
+                <div id='explanation_format'>
+                <div class='form-check form-check-inline'>
+                    <input type='radio' class='form-check-input' name='exp_format_selection' id='option1' autocomplete='off' value='1' onchange='showExplanations();' checked>
+                    <label class='form-check-label' for='option1'>List of Examples</label>
+                </div>
+                <div class='form-check form-check-inline'>
+                    <input type='radio' class='form-check-input' name='exp_format_selection' id='option3' autocomplete='off' value='3' onchange='showExplanations();'>
+                    <label class='form-check-label' for='option3'>Data Distribution</label>
+                </div>
+                </div>
+                 </nav>
+
+            <div class='row d-flex justify-content-center'>
+                 <div class='col-md-4' id='left'>
+                    <div class='classWithPad'>
+                        <div id='div_questions_instuctions'>
+                            <p class='instructions'><span id='q1_countdown'>Please inspect AI explanations first!<br>Questions will be shown here in 10 seconds...</span></p>
+                        </div>
+                        <div id='div_questions' style='display:none;'>
+                                            <form>
+                    <div id='question1-wrapper'>
+                        <p class='instructions'>In Amazon reviews of pet supplies products, is the word <b><u><span id='word'>minutes</span></u></b> more likely to convey a positive or negative sentiment?</p>
+                        <input type='range' id='q1_range' name='q1_range_slider' class='form-range' min='1' max='6' value='1'>
+                        <div class='d-flex justify-content-between'>
+                          <span style='color:blue;font-size:25px;'>Negative Sentiment</span>
+                          <span style='color:orange;font-size:25px;'>Positive Sentiment</span>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div id='question2-wrapper' style='display:none;'>
+                        <p class='instructions'>You selected <span class='choice_sentiment'></span>.</p>
+                        <p class='instructions'>Now, think about scenarios in which the word <b><u>minutes</u></b> might be used to convey a <span class='choice_sentiment'></span> sentiment. Below, describe all the scenarios that you can imagine.</p>
+                        <div class='col'>
+                          <textarea class='form-control' id='response_q2' name='response_q2' rows='5' placeholder='*Scenarios 1&#10;*Scenarios 2&#10;*Scenarios 3'></textarea>
+                        </div>
+                        <div id='wordCount'></div>
+                        <hr>
+                    </div>
+
+                    <div id='question2-confidence-wrapper' style='display:none;'>
+                        <p class='instructions'>How confident do you feel about your judgment that the word <b><u>minutes</u></b> is more likely to convey a <span class='choice_sentiment'></span> sentiment and the scenarios you imagined?</p>
+                        <div class='btn-group' role='group' aria-label='Basic radio toggle button group'>
+                            <input type='radio' class='btn-check' name='confidence_choice1' id='confidence_choice1_l1' value='1' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice1_l1'>Not at all confident</label>
+                            <input type='radio' class='btn-check' name='confidence_choice1' id='confidence_choice1_l2' value='2' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice1_l2'>Less confident</label>
+                            <input type='radio' class='btn-check' name='confidence_choice1' id='confidence_choice1_l3' value='3' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice1_l3'>Moderately confident</label>
+                            <input type='radio' class='btn-check' name='confidence_choice1' id='confidence_choice1_l4' value='4' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice1_l4'>Confident</label>
+                            <input type='radio' class='btn-check' name='confidence_choice1' id='confidence_choice1_l5' value='5' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice1_l5'>Extremely confident</label>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div id='question3-wrapper' style='display:none;'>
+                        <p class='instructions'>AI systems can classify reviews for pet supplies products into positive or negative based on the words that appear in the review. For example, the word <i>bad</i> suggests that the review is negative and the word <i>good</i> suggests that the review is positive.  Some words, such as <i>maybe</i>, do not provide strong evidence of either positive or negative sentiment and should therefore be ignored.</p>
+                        <p class='instructions'>Previously, you believe the word <b><u>minutes</u></b> is more likely to convey a <span class='choice_sentiment'></span> sentiment.</p>
+                        <p class='instructions'>Do you think the word <b><u>minutes</u></b> is strong evidence that an AI system should consider when predicting whether a review conveys a <span class='choice_sentiment'></span> sentiment?</p>
+                        <div class='form-check form-check-inline'>
+                            <input class='form-check-input' type='radio' name='q3_choice' id='q3_choice_yes' value='yes'>
+                            <label class='form-check-label' for='q3_choice_yes'>
+                                <p style='font-size: 20px;'>Yes, an AI system should <b>consider</b> the word <b><u>minutes</u></b> when predicting <span class='choice_sentiment'></span> sentiment.</p>
+                            </label>
+                        </div>
+                        <div class='form-check form-check-inline'>
+                            <input class='form-check-input' type='radio' name='q3_choice' id='q3_choice_no' value='no'>
+                            <label class='form-check-label' for='q3_choice_no'>
+                                <p style='font-size: 20px;'>No, an AI system should <b>ignore</b> the word <b><u>minutes</u></b> when predicting <span class='choice_sentiment'></span> sentiment.</p>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id='question3-confidence-wrapper' style='display:none;'>
+                        <p class='instructions'>How confident do you feel about your judgement that the word <b><u>minutes</u></b> should be <b><u><span id='choice_keep_ignore'></span></u></b> by an AI system when predicting <span class='choice_sentiment'></span> sentiment?</p>
+                        <div class='btn-group' role='group' aria-label='Basic radio toggle button group'>
+                            <input type='radio' class='btn-check' name='confidence_choice3' id='confidence_choice3_l1' value='1' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice3_l1'>Not at all confident</label>
+                            <input type='radio' class='btn-check' name='confidence_choice3' id='confidence_choice3_l2' value='2' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice3_l2'>Less confident</label>
+                            <input type='radio' class='btn-check' name='confidence_choice3' id='confidence_choice3_l3' value='3' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice3_l3'>Moderately confident</label>
+                            <input type='radio' class='btn-check' name='confidence_choice3' id='confidence_choice3_l4' value='4' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice3_l4'>Confident</label>
+                            <input type='radio' class='btn-check' name='confidence_choice3' id='confidence_choice3_l5' value='5' autocomplete='off'>
+                            <label class='btn btn-outline-primary' for='confidence_choice3_l5'>Extremely confident</label>
+                        </div>
+
+                        <hr>
+                    </div>
+
+                    <button id='continue-btn' type='button' class='btn btn-success'>Continue</button>
+
+                    <input type='hidden' name='category' id='category' value='Pet_Supplies'>
+                    <input type='hidden' name='interface_condition' id='interface_condition' value='4'>
+                    <input type='hidden' name='word' value='minutes'>
+                    <input type='hidden' name='next_word' value='phase2_finished'>
+                    <input type='hidden' name='timer' id='timer' value='0'>
+                    <input type='hidden' name='q1_range_slider_hidden' id='q1_range_slider_hidden' value='1'>
+                </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='col-md-4' id='middle'>
+                    <div id='data_distribution'>
+                    </div>
+                    <div class='classWithPad' id='neg_contents'>
+                    </div>
+                </div>
+
+                <div class='col-md-4' id='right'>
+                    <div class='classWithPad' id='pos_contents'>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    </body>
+    <footer>
+        <script type='text/javascript' src='form_handler_treatment.js'></script>
+    </footer>
+</html>
